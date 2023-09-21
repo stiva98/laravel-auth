@@ -4,6 +4,11 @@
 
 @section('main-content')
     <div class="row">
+        <div class="col-12 mb-4">
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-warning w-100 mb-3">
+                + Aggiungi
+            </a>
+        </div>
         <div class="col">
             <table class="table">
                 <thead>
@@ -31,7 +36,9 @@
                             {{ $post ->content }}
                         </td>
                         <td>
-                            PULSANTI
+                            <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}" class="btn btn-warning me-2">
+                                Singolo Film
+                            </a>
                         </td>
                     </tr>  
                     @endforeach
