@@ -34,6 +34,20 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        //Validazioni sulla funzione store()
+
+        $request ->validate([
+            'title' => 'required|max:64',
+            'slug' => 'required|max:64',
+            'content' => 'nullable',
+        ],
+        [
+            'title.required' => 'Inserire il titolo è obbligatorio!',
+            'title.max' => 'Inserire il titolo con massimo 64 caratteri!',
+            'slug.required' => 'Inserire lo slug è obbligatorio!',
+            'slug.max' => 'Inserire lo slug con massimo 64 caratteri!',
+        ]); 
+
         $formData = $request->all();
 
         $post = new Post();
@@ -67,6 +81,20 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        //Validazioni sulla funzione update()
+
+        $request ->validate([
+            'title' => 'required|max:64',
+            'slug' => 'required|max:64',
+            'content' => 'nullable',
+        ],
+        [
+            'title.required' => 'Inserire il titolo è obbligatorio!',
+            'title.max' => 'Inserire il titolo con massimo 64 caratteri!',
+            'slug.required' => 'Inserire lo slug è obbligatorio!',
+            'slug.max' => 'Inserire lo slug con massimo 64 caratteri!',
+        ]); 
+        
         $formData = $request->all();
 
         $post->title = $formData['title'];
