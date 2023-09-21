@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -34,8 +34,17 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $formData = $request->all();
+
+        $post = new Post();
+        $post->title = $formData['title'];
+        $post->slug = $formData['slug'];
+        $post->content = $formData['content'];
+        $post->save();
+
+        return redirect()->route('admin.posts.index');
     }
+    
 
     /**
      * Display the specified resource.
@@ -50,7 +59,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -58,7 +67,14 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $formData = $request->all();
+
+        $post->title = $formData['title'];
+        $post->slug = $formData['slug'];
+        $post->content = $formData['content'];
+        $post->save();
+
+        return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
 
     /**
