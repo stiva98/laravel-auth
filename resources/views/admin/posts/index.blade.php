@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}" class="btn btn-warning me-2">
-                                Singolo Film
+                                Singolo Post
                             </a>
                             <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}" class="btn btn-success me-2">
                                 Modifica
